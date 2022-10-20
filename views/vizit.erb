@@ -7,15 +7,18 @@
 <form action="/vizit" method="POST" role="form">
   <div class="mb-3">
     <label  class="form-label">Ваше имя</label>
-    <input name="client[name]" type="text" class="form-control"  placeholder="Ваше имя" value="">
+    <input name="client[name]" type="text" class="form-control"  placeholder="Ваше имя"
+    value="<%= @c.name %>">
   </div>
   <div class="mb-3">
     <label  class="form-label">Ваш номер телефона</label>
-    <input name="client[phone]" type="text" class="form-control"  placeholder="Ваш номер телефона" value="">
+    <input name="client[phone]" type="text" class="form-control"  placeholder="Ваш номер телефона"
+    value="<%= @c.phone %>">
   </div>
   <div class="mb-3">
     <label  class="form-label">Дата и время</label>
-    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control"  placeholder="Дата и время" value="">
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control"  placeholder="Дата и время"
+    value="<%= @c.datestamp %>">
   </div>
    <div class="mb-3">
     <label for="barber" class="form-label">Выберете парикмахера</label>

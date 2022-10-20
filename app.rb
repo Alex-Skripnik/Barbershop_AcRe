@@ -26,20 +26,21 @@ get '/' do
 end
 
 get '/vizit' do
+  @c = Client.new
   erb :vizit
 end
 
 # спросим Имя, номер телефона и дату, когда придёт клиент.
 post '/vizit' do
   
-  c = Client.new params[:client]
-  if c.save 
+  @c = Client.new params[:client]
+  if @c.save 
       @title = "Thank you!"
-      @message = "Уважаемый #{@username}, мы ждём вас #{@datetime} у выбранного парикмахера #{@barber}."
+      @message = "Уважаемый клиент #{@c.name}, мы ждём вас - #{@c.datestamp} у выбранного парикмахера - #{@c.barber}."
 
       erb :message
   else
-    @error = c.errors.full_messages.first
+    @error = @c.errors.full_messages.first
     erb :vizit
   end
 end
