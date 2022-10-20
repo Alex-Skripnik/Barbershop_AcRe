@@ -33,13 +33,15 @@ end
 post '/vizit' do
   
   c = Client.new params[:client]
-  c.save
+  if c.save 
+      @title = "Thank you!"
+      @message = "Уважаемый #{@username}, мы ждём вас #{@datetime} у выбранного парикмахера #{@barber}."
 
-  
-  @title = "Thank you!"
-  @message = "Уважаемый #{@username}, мы ждём вас #{@datetime} у выбранного парикмахера #{@barber}."
-
-  erb :message
+      erb :message
+  else
+    @error = c.errors.full_messages.first
+    erb :vizit
+  end
 end
 
 
